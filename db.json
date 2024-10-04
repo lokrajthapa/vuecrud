@@ -1,0 +1,40 @@
+{
+  "students": [
+    {
+      "name": "lokraj",
+      "email": "lokraj@gmail",
+      "id": "1"
+    },
+    {
+      "name": "ujjwal sir",
+      "email": "test1@gmail",
+      "id": "2"
+    },
+    {
+      "name": "test2",
+      "email": "test2@gmail",
+      "id": "3"
+    },
+    {
+      "name": "test3",
+      "email": "test3@gmail",
+      "id": "4"
+    },
+    {
+      "id": "af35",
+      "stuname": "test5",
+      "email": "test5@gmail.com"
+    },
+    {
+      "id": "142e",
+      "stuname": "",
+      "email": "test6@gmail.com",
+      "name": "test6"
+    },
+    {
+      "id": "090c",
+      "name": "ujjwal sir3",
+      "email": "ujjwalsir2@gmail"
+    }
+  ]
+}

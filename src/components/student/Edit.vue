@@ -1,10 +1,21 @@
 <script setup>
 
 import { RouterLink } from "vue-router";
+import useStudent from "@/composables/studentApi";
+import { onMounted } from "vue";
+import { useRoute } from "vue-router";
+
+const { studentData, error, getSingleStudent, updateStudent, statusCode } = useStudent();
+
+const { params } = useRoute();
+
+onMounted(()=>{
+  getSingleStudent( params.id );
+})
 
 
 function handleUpdateStudentForm() {
-  updateStudent(params.id, studentData.value);
+  updateStudent (params.id, studentData.value);
 }
 
 </script>
@@ -18,6 +29,7 @@ function handleUpdateStudentForm() {
     <form
       @submit.prevent="handleUpdateStudentForm"
       class="w-full"
+      v-if="studentData"
       
     >
       <div class="flex items-center m-6">
@@ -31,6 +43,7 @@ function handleUpdateStudentForm() {
             class="border-2 border-gray-200 w-full py-2 px-4"
             readonly
             disabled
+            v-model.trim="studentData.id"
           
           />
         </div>
@@ -45,6 +58,7 @@ function handleUpdateStudentForm() {
             id="stuname"
             class="border-2 border-gray-200 w-full py-2 px-4"
             required
+            v-model.trim="studentData.name"
        
           />
         </div>
@@ -59,6 +73,7 @@ function handleUpdateStudentForm() {
             id="email"
             class="border-2 border-gray-200 w-full py-2 px-4"
             required
+            v-model.trim="studentData.email"
           
           />
         </div>
@@ -81,6 +96,21 @@ function handleUpdateStudentForm() {
         </RouterLink>
       </div>
     </form>
+    <div
+      v-if="error"
+      class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg font-medium"
+      role="alert"
+    >
+      Oops! Error encountered: {{ error.message }}
+    </div>
+
+    <div
+      class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg font-medium"
+      role="alert"
+      v-if="statusCode === 200"
+    >
+      student Update successfully
+    </div>
 
     
   </div>
